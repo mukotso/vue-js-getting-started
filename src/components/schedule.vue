@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <h3>WEEKLU SCHEDULE</h3>
+        <h3>{{heading}}</h3>
+        <button @click="addTask" class="button">ADD NEW TASK</button>
         <table v-show="isScheduled" class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -23,7 +24,10 @@
                     <td>{{schedule.status}}</td>
                     <td>{{schedule.started_at}}</td>
                     <td>{{schedule.completed_at}}</td>
-                    <td><button v-bind:class="{ active: completed }">ADD TASKS</button></td>
+                    <td>
+                    <button  @click="editTask" class="button btn-success">EDIT </button>
+                    <button  @click="deleteTask" class="button btn-danger">DELETE</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -43,9 +47,24 @@ export default {
                 { id:6,day: '22nd January 2020', task: 'Migrating', taskNumber: '4', status: 'pending',started_at:"12:16AM",completed_at:"1:00PM" }
         
             ],
+
+            
             completed:true,
-            isScheduled:true
+            isScheduled:true,
+            heading:'VUE JS WEEKLY SCHEDULE'
         };
-    }
+    },
+      methods: {
+    addTask() {
+      alert('TASK ADDED');
+      },
+       deleteTask() {
+      confirm('A YOU SURE YOU WANT TO DELETE THE TASK');
+      alert('TASK DELETED SUCCESSFULLY');
+      },
+      editTask() {
+      alert('TASK EDITED SUCCESSFULLY');
+      }
+  }
 };
 </script>
