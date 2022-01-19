@@ -1,47 +1,31 @@
 <template>
-  <div class="welcome">
-  
-    <h1>{{ msg }}</h1>
-<h2 v=once>{{title}}</h2>
-      <form  v-if="notLoggedIn" >
-      <input v-model="username" placeholder="username">
-      <span class="required">required</span>
-      <input v-model="password" placeholder="password" type="password">
-       <span class="required">required</span><br>
-      <button @click.prevent="login" class="button btn-block"> LOG IN </button><br>
-      <button class="button btn-block" v-bind:disabled="isUserRegisteredDisabled"> <span v-bind:title="registerMessage"> Sign Up</span> </button>
-    </form>
-  </div>
+<div>
+    <div class="welcome main-content">
+    <h2 class="font-bold text-sky-400/100">{{ msg }}</h2>
+    <!-- <h2 v=once>{{title}}</h2> -->
+    <user-login formInfo="LOGIN PAGE"
+    @changeTitle="formInfo= 'TITLE CHANGED'"
+      />
+      </div>
+
+
+      
+</div>
 </template>
 
 <script>
+import UserLogin from './UserLogin.vue'
 export default {
   name: 'welcome',
  
    data() {
     return {
-      username: "",
-      password: "",
-      notLoggedIn:true,
-      title:"LOGIN BELOW",
-      registerMessage:"Please sign up to register your details",
+      // title:"LOGIN BELOW",
       msg:"WELCOME TO MY FIRST VUE APP AND LETS GET STARTED",
-      isUserRegisteredDisabled:false,
     };
   },
-   methods: {
-    login() {
-        if(this.username==""){
-            alert("username is required");
-            return;
-        }else if(this.password==""){
-            alert("password is required");
-            return
-            }
-            else{
-      alert('YOU HAVE BEEN LOGGED IN');
-      }
-      }
+  components:{
+    UserLogin
   }
 };
  
@@ -49,7 +33,7 @@ export default {
 </script>
 
 
-<style>
+<!-- <style>
 .required{
 color:red;
 }
@@ -61,16 +45,16 @@ input{
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-}
-body   {
+} 
+.main-content   {
   margin:50px;
   padding: 30px;
   border-radius: 5px;
-  margin-top: 5%;
 }
 
 .button{
-  background-color: #04AA6D;
+  background: rgb(95,221,9);
+background: linear-gradient(90deg, rgba(95,221,9,1) 27%, rgba(13,222,174,1) 66%);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -134,3 +118,4 @@ width:100%;
 
 
 </style>
+-->

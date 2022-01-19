@@ -1,20 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/congradulations.gif">
-    <welcome msg="Welcome to My first Vue App"/>
-    <schedule />
+  <div  class="flex flex-col min-h-screen"  id="app">
+
+    <the-header>{{title}}</the-header>
+      <div class="flex-grow">
+      <div class="hero container max-w-screen-lg mx-auto pb-10 flex justify-center">
+      <img class="" alt="Vue logo" src="./assets/vueschool.jpeg">
+    </div>
+      
+      <welcome msg="Welcome to My first Vue App"/>
+      <schedule />
+        </div>
+      <the-footer/>
+
   </div>
 </template>
 
 <script>
 import welcome from './components/welcome.vue'
 import schedule from './components/schedule.vue'
+import TheFooter from '../src/components/shared/TheFooter.vue'
+import TheHeader from '../src/components/shared/TheHeader.vue'
 export default {
   name: 'App',
   components: {
     welcome,
-    schedule
-  }
+    schedule,
+    TheFooter,
+    TheHeader
+
+  },
+  data() {
+    return {
+      title:"VUE JS SAMPLE APPLICATION"
+    };
+  },
 }
 </script>
 
@@ -25,6 +44,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
